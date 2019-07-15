@@ -2,8 +2,6 @@ import React from 'react';
 import './colorRadioButton.css';
 
 function ColorRadioButton({ options, onChange, selected }) {
-  // let selectedColor;
-  console.log(selected, 'selected')
   return (
     <div className="color-selector">
       <p>Select a background</p>
@@ -13,10 +11,10 @@ function ColorRadioButton({ options, onChange, selected }) {
         }
         const innerColor = {
           border: `1px solid ${color.value}`,
-          background: `${color.value}`
+          backgroundColor: `${color.value}`
         }
         return (
-          <div className="radio-color">
+          <div className="radio-color" key={color.value}>
             <label htmlFor="noteColor">
               <div style={outerBorderColor} className="outer-circle">
                 <div style={innerColor} className="inner-circle">
@@ -24,7 +22,6 @@ function ColorRadioButton({ options, onChange, selected }) {
               </div>
             </label>
             <input
-              key={color.value}
               type="radio"
               name="noteColor"
               value={color.value}

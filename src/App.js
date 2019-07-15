@@ -3,16 +3,44 @@ import './reset.css'
 import './App.css';
 import ColorRadioButton from './component/ColorRadioButton';
 import { noteColor } from './fixtures'
+import NoteCard from './component/NoteCard';
+import { timeDifference } from './utils/timeDifference';
 
 class App extends React.Component {
   state = {
-    selectedOption: '',
+    selectedColor: 'grey',
+    note: '',
+    noteTimeStamp: new Date(),
+    noteCollection: [],
   }
 
-  handleChange(e) {
-    console.log(e.target.value);
-    this.setState({ selectedOption: e.target.value })
+
+  handleNoteChange = e => {
+    this.setState({ note: e.target.value })
   }
+
+  handleDeleteNote = (index) => {
+    console.log(index, 'index');
+    const newNote = this.state.noteCollection.filter((note, noteIndex) => noteIndex !== index)
+    this.setState({ noteCollection: newNote })
+  }
+
+  handleChange = e => {
+    this.setState({ selectedColor: e.target.value })
+  }
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.setState({ noteTimeStamp: new Date() })
+    const newNote = {
+      note: this.state.note,
+      color: this.state.selectedColor,
+      time: this.state.noteTimeStamp
+    }
+    this.state.noteCollection.unshift(newNote);
+    this.setState({ note: '' })
+  }
+
   render() {
     return (
       <div className="app">
@@ -21,35 +49,30 @@ class App extends React.Component {
             <h2>A simple note taking app</h2>
           </div>
           <div className="container-content">
-            <form>
-              <textarea className="note-input" placeholder="Write something here"></textarea>
-
+            <form onSubmit={this.handleSubmitd}>
+              <textarea
+                className="note-input"
+                placeholder="Write something here"
+                value={this.state.note}
+                onChange={this.handleNoteChange} >
+              </textarea>
               <ColorRadioButton
                 options={noteColor}
-                selected={this.state.selectedOption}
-                onChange={(e) => this.handleChange(e)}
+                selected={this.state.selectedColor}
+                onChange={this.handleChange}
               />
-
-
-              <button type="submit" className="submitBtn">Submit Note</button>
+              <button type="submit" className="submitBtn" onClick={this.handleSubmit}>Submit Note</button>
             </form>
-            <div className="previous-btn-box">
-              <button className="previous-btn">View previous note(s)</button>
-            </div>
             <div className="note-container">
-              <div className="note-card">
-                <p className="note">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil at illo pariatur deserunt facere molestias, vero atque modi ex sunt eaque enim sit cum debitis? Eius officia adipisci quaerat. Quo!</p>
-                <div className="note-content">
-                  <div className="note-date">
-                    <i className="far fa-clock"></i>
-                    <p>3 days ago</p>
-                  </div>
-                  <div className="note-option">
-                    <i className="far fa-edit"></i>
-                    <i className="far fa-trash-alt"></i>
-                  </div>
-                </div>
-              </div>
+              {this.state.noteCollection.map((note, index) => {
+                return <NoteCard
+                  key={index}
+                  note={note.note}
+                  color={note.color}
+                  noteTime={timeDifference(new Date(), note.time)}
+                  deleteNote={() => this.handleDeleteNote(index)}
+                />
+              })}
             </div>
           </div>
         </div>

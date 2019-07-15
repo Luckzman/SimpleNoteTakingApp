@@ -1,5 +1,8 @@
 export const noteColor = [
   {
+    value: 'grey'
+  },
+  {
     value: 'red'
   },
   {

@@ -1,0 +1,44 @@
+
+.note-card{
+  border-radius: 5px;
+  /* background-color: #3b3b3b; */
+  color: #d4d4d4;
+  padding: 15px;
+  margin-bottom: 10px;
+  line-height: 1.005rem;
+  text-align: justify;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+  font-size: 10px;
+}
+
+.note-card > p{
+  margin-bottom: 15px;
+}
+
+.note-card .note-content{
+  display: flex;
+  justify-content: space-between;
+}
+
+.note-card .note-content .note-date{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.note-card .note-content .note-date i{
+  margin-right: 5px;
+  font-size: 15px;
+}
+
+.note-card .note-content .note-option{
+  font-size: 15px;
+  display: flex;
+}
+
+.note-card .note-content .note-option i{
+  margin-left: 10px;
+  cursor: pointer;
+}

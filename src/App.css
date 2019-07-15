@@ -9,6 +9,7 @@
   border: 2px solid #eee;
   border-top: none;
 }
+
 .container-content{
   width: 85%;
   margin: 20px auto;
@@ -32,10 +33,15 @@
   height: 120px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 20px;
-  color: #ececec;
+  padding: 10px 20px 20px;
+  color: #7a7a7a;
   background-color: #f1f1f1;
   resize: none;
+  line-height: 1.2rem;
+}
+
+.app form textarea:focus{
+  outline: none;
 }
 
 .app form .color-selector{
@@ -53,16 +59,10 @@
   line-height: 2.5rem;
 }
 
-/* .app form .color-selector .outerBorderColor{
-  border: 1px solid #aa2424;
-}
-.app form .color-selector .innerBorderColor{
-  border: 1px solid #aa2424;
-  background-color: #aa2424;
-} */
 .app .container-content .previous-btn-box{
   margin: 40px 0 30px;
 }
+
 .app .container-content .previous-btn{
   border: none;
   background-color: #a3a3a3;
@@ -76,47 +76,10 @@
   padding: 10px 30px;
   border: none;
   border-radius: 50px;
+  margin-bottom: 30px;
 }
 
-.app .note-container .note-card{
-  border-radius: 5px;
-  background-color: #3b3b3b;
-  color: #d4d4d4;
-  padding: 15px;
-  line-height: 1.005rem;
-  text-align: justify;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-  sans-serif;
-  font-size: 10px;
+.note-container{
+  height: 50vh;
+  overflow-y: scroll;
 }
-
-.app .note-container .note-card > p{
-  margin-bottom: 5px;
-}
-
-.app .note-container .note-card .note-content{
-  display: flex;
-  justify-content: space-between;
-}
-
-.app .note-container .note-card .note-content .note-date{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.app .note-container .note-card .note-content .note-date i{
-  margin-right: 5px;
-  font-size: 15px;
-}
-
-.app .note-container .note-card .note-content .note-option{
-  font-size: 15px;
-  display: flex;
-}
-
-.app .note-container .note-card .note-content .note-option i{
-  margin-left: 10px;
-}
-
